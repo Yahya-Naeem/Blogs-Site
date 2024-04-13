@@ -1,0 +1,40 @@
+<html lang="en">
+<%- include("../partials/head.ejs") %>
+
+<body>
+  <%- include("../partials/nav.ejs") %>
+
+  <div class="details content">
+    <h2><%= blog.title %></h2>
+    <div class="content">
+      <p><%= blog.body %></p>
+    </div>
+    <!-- data is an html attribute when we click on this it stores data-variable name into doc -->
+    <a class="delete" data-doc="<%= blog._id %>">
+      <img src="/trashcan.svg" alt="Delete Icon">
+    </a>
+  </div>
+
+  <!-- Footer -->
+  <%- include("../partials/footer.ejs") %>
+  <!-- AJAX request -->
+  <script>
+    const trashcan = document.querySelector('a.delete'); //grab by class name
+    trashcan.addEventListener('click', (e) => {
+      const endpoint = `/blogs/${trashcan.dataset.doc}`
+      // AJAX request because not from form 
+      fetch(endpoint, {
+        method: 'DELETE',
+      })
+      .then(response => response.json())   
+      // above response,json change json to js object
+      .then(data => {
+        window.location.href = data.redirect;
+        document.title = 'All blogs';
+      })
+      .catch(err => console.log(err));
+    });
+    
+  </script>
+</body>
+</html>

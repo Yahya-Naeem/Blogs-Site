@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<%- include('./partials/head.ejs')%>
+<body>
+    <div class="container">
+        <%- include('./partials/nav.ejs') %>
+        <p>This is Home page of my Blogs website </p>
+        <div style="margin-left: 2px;">
+            <h3>
+                Blogs 
+            </h3>
+            <div style="margin-left: 30px;">
+                <% if(blogs.length > 0 ) {%>
+                    <% blogs.forEach((blog,index)=>{ %>
+                    <h3><%=index+1%>- <%= blog.title %></h3>
+                    <p ><%= blog.snippet %></p>
+                    <% }) %>
+                <% } else{ %>
+                    <p>No Blogs in Database yet</p>
+                <% } %>
+            </div>
+        </div>
+        <%- include("./partials/footer.ejs") %>
+    </div>
+</body>
+</html>
