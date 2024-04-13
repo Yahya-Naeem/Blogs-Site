@@ -1,0 +1,16 @@
+{
+  "name": "express",
+  "version": "1.0.0",
+  "description": "for showing dynamic data in HTML , we can use view contnt or template engine which can be used in express\r we use EJS for this",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "mongodb": "^6.5.0",
+    "mongoose": "^8.3.1",
+    "morgan": "^1.10.0"
+  }
+}
